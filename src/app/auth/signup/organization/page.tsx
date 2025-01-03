@@ -43,7 +43,7 @@ const signUpSchema = z.object({
 
 type SignUpValues = z.infer<typeof signUpSchema>
 
-export default function SignUpPage() {
+export default function CreateOrganizationPage() {
   const [showPassword, setShowPassword] = useState(false)
   const [isAuthenticating, setIsAuthenticating] = useState(false)
   const router = useRouter()
