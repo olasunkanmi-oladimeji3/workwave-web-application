@@ -41,6 +41,7 @@ export default function CreateOrganizationPage() {
     },
   });
 
+  
   async function onSubmit(data: SignUpValues) {
     setIsAuthenticating(true);
     console.log(data);
