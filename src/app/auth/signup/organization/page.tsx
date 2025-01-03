@@ -54,7 +54,7 @@ export default function CreateOrganizationPage() {
     } catch (error) {
       toast({
         title: "Error",
-        description: "There was an error creating your account.",
+        description: `There was an error creating your account.${error}`,
       });
     } finally {
       setIsAuthenticating(false);
