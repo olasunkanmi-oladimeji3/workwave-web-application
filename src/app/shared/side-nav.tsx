@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import { BarChart, DollarSign, Users, Briefcase, Settings, LayoutDashboard, FileText, Calendar, MessageSquare } from 'lucide-react'
-// import { cn } from '@/lib/utils'
+
 import {
   Sidebar,
   SidebarContent,
