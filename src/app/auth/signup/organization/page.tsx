@@ -75,12 +75,9 @@ export default function SignUpPage() {
   {/* Form Section */}
   <div className="w-full max-w-md space-y-8 py-32 px-11 lg:flex-grow">
     <div className="text-center">
-      <h1 className="text-4xl font-bold">Create an account</h1>
+      <h1 className="text-4xl font-bold">Register your organization</h1>
       <p className="mt-2 text-sm text-muted-foreground">
-        Already have an account?{' '}
-        <Link href="/signin" className="font-medium text-primary hover:underline">
-          Sign in
-        </Link>
+      Enter your organization&apos;s details below to get started
       </p>
     </div>
 
