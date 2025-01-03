@@ -49,7 +49,7 @@ export default function CreateOrganizationPage() {
   function onSubmit(data: SignUpValues) {
     setIsAuthenticating(true);
     // Here you would typically send the data to your backend API
-    console.log(data);
+    console.log(data.industry);
     toast({
       title: "Account created successfully",
       description: "You can now sign in with your new account.",
