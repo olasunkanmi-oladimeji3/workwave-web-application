@@ -1,7 +1,6 @@
 "use client";
-
+import  Image  from "next/image";
 import { useState } from "react";
-import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
@@ -25,6 +24,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+
 
 const signUpSchema = z.object({
   firstName: z.string().min(2, {
@@ -194,7 +194,7 @@ export default function CreateOrganizationPage() {
 
       {/* Image Section */}
       <div className="mt-12 lg:mt-0 lg:w-1/2">
-        <img
+        <Image
           src="/org-signup.png"
           alt="Register Organization"
           className="w-full h-auto object-cover rounded-lg"

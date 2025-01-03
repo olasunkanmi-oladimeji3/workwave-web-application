@@ -7,17 +7,9 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
 import * as z from 'zod'
 import { Eye, EyeOff } from 'lucide-react'
-
+import  Image  from "next/image";
 import { Button } from '@/components/ui/button'
-import {
-  Form,
-  FormControl,
-  FormDescription,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from '@/components/ui/form'
+import {Form,FormControl,FormDescription,FormField,FormItem,FormLabel,FormMessage} from '@/components/ui/form'
 import { Input } from '@/components/ui/input'
 import { toast } from '@/hooks/use-toast'
 
@@ -191,7 +183,7 @@ export default function SignUpPage() {
 
   {/* Image Section */}
   <div className=" w-full lg:w-1/2 flex-grow px-5">
-    <img
+    <Image
       src="/signup.png"
       alt="Create Account"
       className="w-full h-auto object-cover"
