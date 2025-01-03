@@ -43,22 +43,14 @@ export default function CreateOrganizationPage() {
 
   async function onSubmit(data: SignUpValues) {
     setIsAuthenticating(true);
-    try {
-      // Here you would typically send the data to your backend API
-      console.log(data);
+    console.log(data);
       toast({
         title: "Account created successfully",
         description: "You can now sign in with your new account.",
       });
       router.push("/solutions/dashboard/admin");
-    } catch (error) {
-      toast({
-        title: "Error",
-        description: `There was an error creating your account.${error}`,
-      });
-    } finally {
       setIsAuthenticating(false);
-    }
+    
   }
 
   return (
