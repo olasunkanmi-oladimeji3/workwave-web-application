@@ -1,200 +1,205 @@
-'use client'
+"use client";
 
-import { useState } from 'react'
-import Link from 'next/link'
-import { useRouter } from 'next/navigation'
-import { zodResolver } from '@hookform/resolvers/zod'
-import { useForm } from 'react-hook-form'
-import * as z from 'zod'
-import { Eye, EyeOff } from 'lucide-react'
+import { useState } from "react";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
+import * as z from "zod";
 
-import { Button } from '@/components/ui/button'
+import { Button } from "@/components/ui/button";
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
   FormLabel,
   FormMessage,
-} from '@/components/ui/form'
-import { Input } from '@/components/ui/input'
-import { toast } from '@/hooks/use-toast'
-
+} from "@/components/ui/form";
+import { Input } from "@/components/ui/input";
+import { toast } from "@/hooks/use-toast";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 
 const signUpSchema = z.object({
   firstName: z.string().min(2, {
-    message: 'Name must be at least 2 characters.',
+    message: "Name must be at least 2 characters.",
   }),
   lastName: z.string().min(2, {
-    message: 'Name must be at least 2 characters.',
+    message: "Name must be at least 2 characters.",
   }),
   email: z.string().email({
-    message: 'Please enter a valid email address.',
+    message: "Please enter a valid email address.",
   }),
-  password: z.string().min(8, {
-    message: 'Password must be at least 8 characters.',
+  industry: z.string({
+    message: "Please enter a valid email address.",
   }),
-  confirmPassword: z.string(),
-}).refine((data) => data.password === data.confirmPassword, {
-  message: "Passwords don't match",
-  path: ["confirmPassword"],
-})
+  website: z.string({
+    message: "Please enter a valid email address.",
+  }),
+});
 
-type SignUpValues = z.infer<typeof signUpSchema>
+type SignUpValues = z.infer<typeof signUpSchema>;
 
 export default function CreateOrganizationPage() {
-  const [showPassword, setShowPassword] = useState(false)
-  const [isAuthenticating, setIsAuthenticating] = useState(false)
-  const router = useRouter()
+  const [isAuthenticating, setIsAuthenticating] = useState(false);
+  const router = useRouter();
   const form = useForm<SignUpValues>({
     resolver: zodResolver(signUpSchema),
     defaultValues: {
-      firstName: '',
-      lastName: '',
-      email: '',
-      password: '',
-      confirmPassword: '',
+      firstName: "",
+      lastName: "",
+      email: "",
+      website: "",
+      industry: "",
     },
-  })
+  });
 
   function onSubmit(data: SignUpValues) {
     setIsAuthenticating(true);
     // Here you would typically send the data to your backend API
-    console.log(data)
+    console.log(data);
     toast({
-      title: 'Account created successfully',
-      description: 'You can now sign in with your new account.',
-    })
-    router.push('/auth/signup/organization')
-    
+      title: "Account created successfully",
+      description: "You can now sign in with your new account.",
+    });
+    router.push("/auth/signup/organization");
   }
 
   return (
-    <div className="container mx-auto w-4/5 flex flex-col-reverse items-center justify-center lg:flex-row">
-  {/* Form Section */}
-  <div className="w-full max-w-md space-y-8 py-32 px-11 lg:flex-grow">
-    <div className="text-center">
-      <h1 className="text-4xl font-bold">Register your organization</h1>
-      <p className="mt-2 text-sm text-muted-foreground">
-      Enter your organization&apos;s details below to get started
-      </p>
+    <div className="container mx-auto w-4/5 lg:flex lg:items-center lg:justify-between">
+      {/* Form Section */}
+      <div className="lg:w-1/2 space-y-2 my-16 pt-5">
+        <h1 className="text-3xl  font-bold text-center">
+          Register Your Organization
+        </h1>
+        <p className="mt-2 text-center text-sm text-muted-foreground">
+          Enter your organization&apos;s details below to get started.
+        </p>
+
+        <Form {...form}>
+          <form
+            onSubmit={form.handleSubmit(onSubmit)}
+            className="mt-8 lg:px-11 md:px-3 space-y-4 mx-auto"
+          >
+            <div className="space-y-2">
+              <div className="flex flex-col lg:flex-row lg:space-x-4">
+                <FormField
+                  control={form.control}
+                  name="firstName"
+                  render={({ field }) => (
+                    <FormItem className="w-full">
+                      <FormLabel>Organization Name</FormLabel>
+                      <FormControl>
+                        <Input
+                          placeholder="Enter your organization name"
+                          {...field}
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <FormItem className="w-full">
+                  <FormLabel>Organization Logo</FormLabel>
+                  <FormControl>
+                    <Input
+                      type="file"
+                      accept="image/png, image/jpeg, image/svg+xml"
+                      className="block w-full"
+                    />
+                  </FormControl>
+                  <p className="mt-1 text-xs text-muted-foreground">
+                    PNG, JPG, or SVG, max 5MB
+                  </p>
+                </FormItem>
+              </div>
+              <FormField
+                control={form.control}
+                name="email"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Admin Email</FormLabel>
+                    <FormControl>
+                      <Input
+                        type="email"
+                        placeholder="admin@example.com"
+                        {...field}
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+               <FormField
+                control={form.control}
+                name="industry"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Industry</FormLabel>
+                    <Select
+                      onValueChange={field.onChange}
+                      defaultValue={field.value}
+                    >
+                      <FormControl>
+                        <SelectTrigger>
+                          <SelectValue placeholder="Select a verified email to display" />
+                        </SelectTrigger>
+                      </FormControl>
+                      <SelectContent>
+                        <SelectItem value="technology">Technology</SelectItem>
+                        <SelectItem value="finance">Finance</SelectItem>
+                        <SelectItem value="healthcare">Healthcare</SelectItem>
+                        <SelectItem value="education">Education</SelectItem>
+                        <SelectItem value="retail">Retail</SelectItem>
+                        <SelectItem value="other">Other</SelectItem>
+                      </SelectContent>
+                    </Select>
+
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="website"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Website</FormLabel>
+                    <FormControl>
+                      <Input placeholder="https://example.com" {...field} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+             
+            </div>
+
+            <Button
+              type="submit"
+              className={`w-full ${isAuthenticating ? "opacity-50" : ""}`}
+              disabled={isAuthenticating}
+            >
+              {isAuthenticating ? "Creating Account..." : "Create Organization"}
+            </Button>
+          </form>
+        </Form>
+      </div>
+
+      {/* Image Section */}
+      <div className="mt-12 lg:mt-0 lg:w-1/2">
+        <img
+          src="/org-signup.png"
+          alt="Register Organization"
+          className="w-full h-auto object-cover rounded-lg"
+        />
+      </div>
     </div>
-
-    <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-2">
-        <div className="flex flex-row items-center space-x-4">
-          <FormField
-            control={form.control}
-            name="firstName"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Organization Name</FormLabel>
-                <FormControl>
-                  <Input placeholder="John" {...field} />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-          <FormField
-            control={form.control}
-            name="lastName"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Last Name</FormLabel>
-                <FormControl>
-                  <Input placeholder="Doe" {...field} />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-        </div>
-        <FormField
-          control={form.control}
-          name="email"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Email</FormLabel>
-              <FormControl>
-                <Input type="email" placeholder="john@example.com" {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <FormField
-          control={form.control}
-          name="password"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Password</FormLabel>
-              <FormControl>
-                <div className="relative">
-                  <Input
-                    type={showPassword ? 'text' : 'password'}
-                    placeholder="********"
-                    {...field}
-                  />
-                  <Button
-                    type="button"
-                    variant="ghost"
-                    size="sm"
-                    className="absolute right-0 top-0 h-full px-3 py-2 hover:bg-transparent"
-                    onClick={() => setShowPassword(!showPassword)}
-                  >
-                    {showPassword ? (
-                      <EyeOff className="h-4 w-4" />
-                    ) : (
-                      <Eye className="h-4 w-4" />
-                    )}
-                    <span className="sr-only">
-                      {showPassword ? 'Hide password' : 'Show password'}
-                    </span>
-                  </Button>
-                </div>
-              </FormControl>
-              <FormDescription>
-                Password must be at least 8 characters long.
-              </FormDescription>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <FormField
-          control={form.control}
-          name="confirmPassword"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Confirm Password</FormLabel>
-              <FormControl>
-                <Input type="password" placeholder="********" {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <Button
-          type="submit"
-          className={`w-full ${isAuthenticating ? 'opacity-50' : ''}`}
-          disabled={isAuthenticating}
-        >
-          {isAuthenticating ? 'Creating account...' : 'Sign Up'}
-        </Button>
-      </form>
-    </Form>
-  </div>
-
-  {/* Image Section */}
-  <div className=" w-full lg:w-1/2 flex-grow px-5">
-    <img
-      src="/signup.png"
-      alt="Create Account"
-      className="w-full h-auto object-cover"
-    />
-  </div>
-</div>
-
-  )
+  );
 }

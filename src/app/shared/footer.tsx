@@ -1,14 +1,12 @@
 import Link from 'next/link'
 import { Facebook, Twitter, Linkedin, Instagram, } from 'lucide-react'
-import { Button } from '@/components/ui/button'
-import { Input } from '@/components/ui/input'
 import { Separator } from '@/components/ui/separator'
 
 export default function Footer() {
   return (
     <footer className="bg-muted text-gray-600 ">
       <div className="container mx-auto px-11 py-12">
-        <div className="grid gap-8 md:grid-cols-4 lg:grid-cols-4">
+        <div className="grid gap-8 md:grid-cols-4 lg:grid-cols-4 mx-auto">
           <div>
             <h2 className="mb-6 text-sm font-semibold uppercase text-gray-900">Company</h2>
             <ul className="space-y-4">
@@ -53,25 +51,12 @@ export default function Footer() {
             </ul>
           </div>
           
-          <div>
-            <h2 className="mb-6 text-sm font-semibold uppercase text-gray-900">Subscribe</h2>
-            <p className="mb-4 text-sm">Stay updated with our latest features and releases</p>
-            <form className="flex flex-col space-y-2 sm:flex-row sm:space-x-2 sm:space-y-0">
-              <Input
-                type="email"
-                placeholder="Enter your email"
-                className="rounded-md"
-              />
-              <Button type="submit" className="whitespace-nowrap">
-                Subscribe
-              </Button>
-            </form>
-          </div>
+         
         </div>
         <Separator className="my-8" />
         <div className="flex flex-col items-center justify-between space-y-4 sm:flex-row sm:space-y-0">
           <div className="text-sm">
-            © 2023 BusinessPro™. All Rights Reserved.
+            © 2025 WorkWave™. All Rights Reserved.
           </div>
           <div className="flex space-x-6">
             <Link href="#" className="text-gray-500 hover:text-gray-900">
