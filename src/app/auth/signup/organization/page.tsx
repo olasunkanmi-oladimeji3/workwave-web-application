@@ -1,32 +1,28 @@
 "use client";
-import  Image  from "next/image";
+import Image from "next/image";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
 import { Button } from "@/components/ui/button";
-import {Form,FormControl,FormField,FormItem,FormLabel,FormMessage} from "@/components/ui/form";
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { toast } from "@/hooks/use-toast";
-import {Select,SelectContent,SelectItem,SelectTrigger,SelectValue,} from "@/components/ui/select";
-
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 
 const signUpSchema = z.object({
-  firstName: z.string().min(2, {
+  orgName: z.string().min(2, {
     message: "Name must be at least 2 characters.",
   }),
-  lastName: z.string().min(2, {
-    message: "Name must be at least 2 characters.",
-  }),
-  email: z.string().email({
+  adminEmail: z.string().email({
     message: "Please enter a valid email address.",
   }),
-  industry: z.string({
-    message: "Please enter a valid email address.",
+  industry: z.string().min(1, {
+    message: "Please select an industry.",
   }),
-  website: z.string({
-    message: "Please enter a valid email address.",
+  website: z.string().url({
+    message: "Please enter a valid URL.",
   }),
 });
 
@@ -38,30 +34,38 @@ export default function CreateOrganizationPage() {
   const form = useForm<SignUpValues>({
     resolver: zodResolver(signUpSchema),
     defaultValues: {
-      firstName: "",
-      lastName: "",
-      email: "",
-      website: "",
+      orgName: "",
+      adminEmail: "",
       industry: "",
+      website: "",
     },
   });
 
-  function onSubmit(data: SignUpValues) {
+  async function onSubmit(data: SignUpValues) {
     setIsAuthenticating(true);
-    // Here you would typically send the data to your backend API
-    console.log(data.industry);
-    toast({
-      title: "Account created successfully",
-      description: "You can now sign in with your new account.",
-    });
-    router.push("/auth/signup/organization");
+    try {
+      // Here you would typically send the data to your backend API
+      console.log(data);
+      toast({
+        title: "Account created successfully",
+        description: "You can now sign in with your new account.",
+      });
+      router.push("/solutions/dashboard/admin");
+    } catch (error) {
+      toast({
+        title: "Error",
+        description: "There was an error creating your account.",
+      });
+    } finally {
+      setIsAuthenticating(false);
+    }
   }
 
   return (
     <div className="container mx-auto w-4/5 lg:flex lg:items-center lg:justify-between">
       {/* Form Section */}
       <div className="lg:w-1/2 space-y-2 my-16 pt-5">
-        <h1 className="text-3xl  font-bold text-center">
+        <h1 className="text-3xl font-bold text-center">
           Register Your Organization
         </h1>
         <p className="mt-2 text-center text-sm text-muted-foreground">
@@ -77,7 +81,7 @@ export default function CreateOrganizationPage() {
               <div className="flex flex-col lg:flex-row lg:space-x-4">
                 <FormField
                   control={form.control}
-                  name="firstName"
+                  name="orgName"
                   render={({ field }) => (
                     <FormItem className="w-full">
                       <FormLabel>Organization Name</FormLabel>
@@ -107,7 +111,7 @@ export default function CreateOrganizationPage() {
               </div>
               <FormField
                 control={form.control}
-                name="email"
+                name="adminEmail"
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel>Admin Email</FormLabel>
@@ -122,7 +126,7 @@ export default function CreateOrganizationPage() {
                   </FormItem>
                 )}
               />
-               <FormField
+              <FormField
                 control={form.control}
                 name="industry"
                 render={({ field }) => (
@@ -134,7 +138,7 @@ export default function CreateOrganizationPage() {
                     >
                       <FormControl>
                         <SelectTrigger>
-                          <SelectValue placeholder="Select a verified email to display" />
+                          <SelectValue placeholder="Select your industry" />
                         </SelectTrigger>
                       </FormControl>
                       <SelectContent>
@@ -146,7 +150,6 @@ export default function CreateOrganizationPage() {
                         <SelectItem value="other">Other</SelectItem>
                       </SelectContent>
                     </Select>
-
                     <FormMessage />
                   </FormItem>
                 )}
@@ -164,7 +167,6 @@ export default function CreateOrganizationPage() {
                   </FormItem>
                 )}
               />
-             
             </div>
 
             <Button

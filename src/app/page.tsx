@@ -17,6 +17,7 @@ export default function Home() {
   );
 }
 
+
 function Hero() {
   return (
     <section className="bg-background py-32 px-4 sm:py-32 md:py-20 lg:py-32">

@@ -5,8 +5,8 @@ import { Separator } from '@/components/ui/separator'
 export default function Footer() {
   return (
     <footer className="bg-muted text-gray-600 ">
-      <div className="container mx-auto px-11 py-12">
-        <div className="grid gap-8 md:grid-cols-4 lg:grid-cols-4 mx-auto">
+      <div className="container ml-auto px-11 py-12">
+        <div className="grid gap-8 md:grid-cols-4 lg:grid-cols-4 ">
           <div>
             <h2 className="mb-6 text-sm font-semibold uppercase text-gray-900">Company</h2>
             <ul className="space-y-4">

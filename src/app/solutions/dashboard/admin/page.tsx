@@ -32,7 +32,8 @@ const signInSchema = z.object({
 
 type SignInValues = z.infer<typeof signInSchema>
 
-export default function SignInPage() {
+
+export default function AdminDashboard() {
   const [showPassword, setShowPassword] = useState(false)
   const router = useRouter()
   const form = useForm<SignInValues>({
