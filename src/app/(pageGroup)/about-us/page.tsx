@@ -8,7 +8,7 @@ export default function AboutUs() {
       <section className="mb-16 text-center">
         <h1 className="mb-4 text-4xl font-bold">About BusinessPro</h1>
         <p className="mx-auto max-w-2xl text-lg text-muted-foreground">
-          We&lsquo;re on a mission to revolutionize business management with cutting-edge technology and unparalleled user experience.
+          We&apos;re on a mission to revolutionize business management with cutting-edge technology and unparalleled user experience.
         </p>
       </section>
 
