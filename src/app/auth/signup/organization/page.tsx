@@ -50,8 +50,6 @@ export default function CreateOrganizationPage() {
       });
       router.push("/solutions/dashboard/admin");
       setIsAuthenticating(false);
-      
-    
   }
 
   return (
