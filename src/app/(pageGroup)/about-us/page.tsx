@@ -8,7 +8,7 @@ export default function AboutUs() {
       <section className="mb-16 text-center">
         <h1 className="mb-4 text-4xl font-bold">About BusinessPro</h1>
         <p className="mx-auto max-w-2xl text-lg text-muted-foreground">
-          We&apos;re on a mission to revolutionize business management with cutting-edge technology and unparalleled user experience.
+          We are on a mission to revolutionize business management with cutting-edge technology and unparalleled user experience.
         </p>
       </section>
 
@@ -20,7 +20,7 @@ export default function AboutUs() {
               Founded in 2023, BusinessPro emerged from a simple idea: that managing a business should be intuitive, efficient, and even enjoyable. Our founders, seasoned entrepreneurs themselves, experienced firsthand the challenges of juggling multiple tools and platforms to run their operations.
             </p>
             <p className="mb-4 text-muted-foreground">
-              Driven by the vision of a unified, all-in-one solution, they assembled a team of top-tier developers, designers, and business experts. Together, we&lsquo;ve created a platform that streamlines every aspect of business management, from employee productivity to financial oversight.
+              Driven by the vision of a unified, all-in-one solution, they assembled a team of top-tier developers, designers, and business experts. Together, we have created a platform that streamlines every aspect of business management, from employee productivity to financial oversight.
             </p>
             <Button className="self-start">Learn More</Button>
           </div>
@@ -88,7 +88,7 @@ export default function AboutUs() {
       <section className="text-center">
         <h2 className="mb-4 text-3xl font-bold">Join Us on Our Journey</h2>
         <p className="mb-6 text-muted-foreground">
-          We&lsquo;re always looking for talented individuals to join our team and help shape the future of business management.
+          We are always looking for talented individuals to join our team and help shape the future of business management.
         </p>
         <Button size="lg">View Career Opportunities</Button>
       </section>
