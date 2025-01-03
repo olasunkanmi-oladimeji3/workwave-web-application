@@ -6,9 +6,9 @@ import { Separator } from '@/components/ui/separator'
 
 export default function Footer() {
   return (
-    <footer className="bg-gray-100 text-gray-600 ">
-      <div className="container mx-auto px-6 py-12">
-        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+    <footer className="bg-muted text-gray-600 ">
+      <div className="container mx-auto px-11 py-12">
+        <div className="grid gap-8 md:grid-cols-4 lg:grid-cols-4">
           <div>
             <h2 className="mb-6 text-sm font-semibold uppercase text-gray-900">Company</h2>
             <ul className="space-y-4">
@@ -19,27 +19,10 @@ export default function Footer() {
                 <Link href="/careers" className="hover:text-primary">Careers</Link>
               </li>
               <li>
-                <Link href="/brand" className="hover:text-primary">Brand Center</Link>
+                <Link href="/brand" className="hover:text-primary">FAQ</Link>
               </li>
               <li>
                 <Link href="/blog" className="hover:text-primary">Blog</Link>
-              </li>
-            </ul>
-          </div>
-          <div>
-            <h2 className="mb-6 text-sm font-semibold uppercase text-gray-900">Help center</h2>
-            <ul className="space-y-4">
-              <li>
-                <Link href="/discord" className="hover:text-primary">Discord Server</Link>
-              </li>
-              <li>
-                <Link href="/twitter" className="hover:text-primary">Twitter</Link>
-              </li>
-              <li>
-                <Link href="/facebook" className="hover:text-primary">Facebook</Link>
-              </li>
-              <li>
-                <Link href="/contact" className="hover:text-primary">Contact Us</Link>
               </li>
             </ul>
           </div>
@@ -57,6 +40,19 @@ export default function Footer() {
               </li>
             </ul>
           </div>
+          <div>
+            <h2 className="mb-6 text-sm font-semibold uppercase text-gray-900">Help center</h2>
+            <ul className="space-y-4">
+              <li>
+                <Link href="/discord" className="hover:text-primary">Discord Server</Link>
+              </li>
+              
+              <li>
+                <Link href="/contact" className="hover:text-primary">Contact Us</Link>
+              </li>
+            </ul>
+          </div>
+          
           <div>
             <h2 className="mb-6 text-sm font-semibold uppercase text-gray-900">Subscribe</h2>
             <p className="mb-4 text-sm">Stay updated with our latest features and releases</p>
