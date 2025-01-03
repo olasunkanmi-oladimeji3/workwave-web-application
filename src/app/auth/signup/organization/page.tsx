@@ -183,6 +183,8 @@ export default function CreateOrganizationPage() {
         <Image
           src="/org-signup.png"
           alt="Register Organization"
+          width={500}
+          height={100}
           className="w-full h-auto object-cover rounded-lg"
         />
       </div>

@@ -186,6 +186,8 @@ export default function SignUpPage() {
     <Image
       src="/signup.png"
       alt="Create Account"
+      width={500}
+      height={100}
       className="w-full h-auto object-cover"
     />
   </div>
