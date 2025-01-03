@@ -1,8 +1,5 @@
 import type { Metadata } from "next";
 import "./globals.css";
-// import { useState } from "react";
-import { Button } from "@/components/ui/button";
-// import SideNav from "./shared/side-nav";
 import TopNav from "./shared/top-nav";
 import Footer from "./shared/footer";
 import { Toaster } from "@/components/ui/toaster";
